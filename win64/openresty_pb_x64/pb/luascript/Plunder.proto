@@ -1,0 +1,177 @@
+package ShiHun.Plunder;
+import "NetMsgHead.proto";
+import "Friend.proto";
+
+enum CMD
+{
+	CMD_SMsgC2ZS_GetPlunderStatus = 1601;
+	CMD_SMsgC2ZS_Practice = 1602;
+	CMD_SMsgC2ZS_RefreshPracticeStage = 1603;
+	CMD_SMsgC2ZS_CompletePractice = 1604;
+	CMD_SMsgC2ZS_PracticeSetHelper = 1605;
+	CMD_SMsgC2ZS_Plunder = 1606;
+	CMD_SMsgC2ZS_RefreshOthersPractice = 1607;
+	CMD_SMsgZS2C_RefreshOthersPracticeResult = 1608;
+	CMD_SMsgZS2C_GetPlunderStatusResult = 1609;
+	CMD_SMsgZS2C_PracticeResult = 1610;
+	CMD_SMsgC2ZS_BuyRefresh = 1611;
+	CMD_SMsgZS2C_GetOtherPracticeResult = 1612;
+	CMD_SMsgC2ZS_BuyLastPracticeStage = 1613;
+	CMD_SMsgZS2C_PracticeSetHelperResult = 1614;
+	CMD_SMsgC2ZS_PracticeGetFriends = 1615;
+	CMD_SMsgZS2C_PracticeGetFriendsResult = 1616;
+	CMD_SMsgZS2C_PlunderResult = 1617;
+	CMD_SMsgC2ZS_GetOtherPractice = 1618;
+	CMD_SMsgZS2C_MarauderInfo = 1619;
+	CMD_SMsgC2ZS_GetMarauderInfo = 1620;
+	CMD_SMsgZS2C_GetMarauderInfoResult = 1621;
+}
+
+extend NetMsgHead.NetMsgHead
+{
+	optional SMsgC2ZS_GetPlunderStatus vSMsgC2ZS_GetPlunderStatus = 1601;
+	optional SMsgC2ZS_Practice vSMsgC2ZS_Practice = 1602;
+	optional SMsgC2ZS_RefreshPracticeStage vSMsgC2ZS_RefreshPracticeStage = 1603;
+	optional SMsgC2ZS_CompletePractice vSMsgC2ZS_CompletePractice = 1604;
+	optional SMsgC2ZS_PracticeSetHelper vSMsgC2ZS_PracticeSetHelper = 1605;
+	optional SMsgC2ZS_Plunder vSMsgC2ZS_Plunder = 1606;
+	optional SMsgC2ZS_RefreshOthersPractice vSMsgC2ZS_RefreshOthersPractice = 1607;
+	optional SMsgZS2C_RefreshOthersPracticeResult vSMsgZS2C_RefreshOthersPracticeResult = 1608;
+	optional SMsgZS2C_GetPlunderStatusResult vSMsgZS2C_GetPlunderStatusResult = 1609;
+	optional SMsgZS2C_PracticeResult vSMsgZS2C_PracticeResult = 1610;
+	optional SMsgC2ZS_BuyRefresh vSMsgC2ZS_BuyRefresh = 1611;
+	optional SMsgZS2C_GetOtherPracticeResult vSMsgZS2C_GetOtherPracticeResult = 1612;
+	optional SMsgC2ZS_BuyLastPracticeStage vSMsgC2ZS_BuyLastPracticeStage = 1613;
+	optional SMsgZS2C_PracticeSetHelperResult vSMsgZS2C_PracticeSetHelperResult = 1614;
+	optional SMsgC2ZS_PracticeGetFriends vSMsgC2ZS_PracticeGetFriends = 1615;
+	optional SMsgZS2C_PracticeGetFriendsResult vSMsgZS2C_PracticeGetFriendsResult = 1616;
+	optional SMsgZS2C_PlunderResult vSMsgZS2C_PlunderResult = 1617;
+	optional SMsgC2ZS_GetOtherPractice vSMsgC2ZS_GetOtherPractice = 1618;
+	optional SMsgZS2C_MarauderInfo vSMsgZS2C_MarauderInfo = 1619;
+	optional SMsgC2ZS_GetMarauderInfo vSMsgC2ZS_GetMarauderInfo = 1620;
+	optional SMsgZS2C_GetMarauderInfoResult vSMsgZS2C_GetMarauderInfoResult = 1621;
+}
+
+
+message SMsgC2ZS_GetPlunderStatus
+{
+
+}
+
+message SMsgC2ZS_Practice
+{
+}
+
+message SMsgC2ZS_RefreshPracticeStage
+{
+}
+
+message SMsgC2ZS_CompletePractice
+{
+}
+
+message SMsgC2ZS_PracticeSetHelper
+{
+	optional int64 friendDBID = 1;
+}
+
+message SMsgC2ZS_Plunder
+{
+	optional int64 targetDBID = 1;
+}
+
+message SMsgC2ZS_RefreshOthersPractice
+{
+}
+
+message SMsgZS2C_RefreshOthersPracticeResult
+{
+	repeated int64 actorDBID = 1;
+	repeated int32 stage = 2;
+	repeated int32 leftTime = 3;
+}
+
+message SMsgZS2C_GetPlunderStatusResult
+{
+	optional int32 usedPracticeTimes = 1;		// 已使用的修炼次数
+	optional int32 usedPlunderTimes = 2;		// 已使用的掠夺次数
+	optional int32 skillPoint = 3;			// 历练值
+	optional int32 stage = 4;			// 修炼等级
+	optional int32 leftPracticeTime = 5;		// 剩余修炼时间
+	optional int32 refreshTimes = 6;		// 刷新次数
+	optional int32 buyRefreshTimes = 7;		// 购买刷新次数
+	optional int64 friendDBID = 8;
+	optional int32 friendHead = 9;
+}
+
+message SMsgZS2C_PracticeResult
+{
+	optional int32 leftTime = 1; 			// 剩余时间
+}
+
+message SMsgC2ZS_GetOtherPractice
+{
+	optional int64 targetDBID = 1; 
+}
+
+message SMsgZS2C_GetOtherPracticeResult
+{
+	optional int64 targetDBID = 1;
+	optional string name = 2;
+	optional int32 head = 3;
+	optional int32 level = 4;
+	optional int32 fight = 5;
+	optional string helperName = 6;
+	optional int32 bePlunderedTimes = 7;
+	optional int32 skillPoint = 8;
+	optional int32 silver = 9;
+	optional int64 helperDBID = 10;
+}
+
+message SMsgC2ZS_BuyRefresh
+{
+}
+
+message SMsgC2ZS_BuyLastPracticeStage
+{
+}
+
+message SMsgZS2C_PracticeSetHelperResult
+{
+	optional int64 friendDBID = 1;
+}
+
+message SMsgC2ZS_PracticeGetFriends
+{
+}
+
+message SMsgZS2C_PracticeGetFriendsResult
+{
+	repeated Friend.SFriendContext friendContext = 1;
+}
+
+message SMsgZS2C_PlunderResult
+{
+}
+
+message SMsgZS2C_MarauderInfo
+{ 
+	repeated int64 dbid = 1;
+	repeated int32 head = 2;
+	repeated bool practice = 3;
+}
+
+message SMsgC2ZS_GetMarauderInfo
+{
+	optional int64 targetID = 1;
+}
+
+message SMsgZS2C_GetMarauderInfoResult
+{
+	optional int64 targetID = 1;
+	optional string name = 2;
+	optional int32 fight = 3;
+	optional int32 head = 4;
+	optional int32 level = 5;
+	repeated int32 heroResID = 6;
+}
